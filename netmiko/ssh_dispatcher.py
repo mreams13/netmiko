@@ -12,7 +12,7 @@ from netmiko.aruba import ArubaSSH
 from netmiko.calix import CalixB6SSH, CalixB6Telnet
 from netmiko.checkpoint import CheckPointGaiaSSH
 from netmiko.ciena import CienaSaosSSH
-from netmiko.cisco import CiscoAsaSSH, CiscoAsaFileTransfer
+from netmiko.cisco import CiscoAsaSSH, CiscoAsaSerial, CiscoAsaFileTransfer
 from netmiko.cisco import (
     CiscoIosSSH,
     CiscoIosFileTransfer,
@@ -52,7 +52,7 @@ from netmiko.huawei import HuaweiSSH, HuaweiVrpv8SSH
 from netmiko.ipinfusion import IpInfusionOcNOSSSH, IpInfusionOcNOSTelnet
 from netmiko.juniper import JuniperSSH, JuniperTelnet
 from netmiko.juniper import JuniperFileTransfer
-from netmiko.linux import LinuxSSH, LinuxFileTransfer
+from netmiko.linux import LinuxSSH, LinuxSerial, LinuxFileTransfer
 from netmiko.mellanox import MellanoxSSH
 from netmiko.mrv import MrvOptiswitchSSH
 from netmiko.netapp import NetAppcDotSSH
@@ -68,7 +68,7 @@ from netmiko.ruckus import RuckusFastironTelnet
 from netmiko.terminal_server import TerminalServerSSH
 from netmiko.terminal_server import TerminalServerTelnet
 from netmiko.ubiquiti import UbiquitiEdgeSSH
-from netmiko.vyos import VyOSSSH
+from netmiko.vyos import VyOSSSH, VyOSSerial
 from netmiko.oneaccess import OneaccessOneOSTelnet, OneaccessOneOSSSH
 
 
@@ -199,6 +199,9 @@ CLASS_MAPPER["oneaccess_oneos_telnet"] = OneaccessOneOSTelnet
 
 # Add serial drivers
 CLASS_MAPPER["cisco_ios_serial"] = CiscoIosSerial
+CLASS_MAPPER["cisco_asa_serial"] = CiscoAsaSerial
+CLASS_MAPPER["vyos_serial"] = VyOSSerial
+CLASS_MAPPER["linux_serial"] = LinuxSerial
 
 # Add general terminal_server driver and autodetect
 CLASS_MAPPER["terminal_server"] = TerminalServerSSH

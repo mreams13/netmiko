@@ -1,11 +1,11 @@
 from __future__ import print_function
 from __future__ import unicode_literals
 import time
-from netmiko.cisco_base_connection import CiscoSSHConnection
+from netmiko.cisco_base_connection import CiscoBaseConnection
 
 
-class VyOSSSH(CiscoSSHConnection):
-    """Implement methods for interacting with VyOS network devices."""
+class VyOSBase(CiscoBaseConnection):
+    """Common Methods for VyOS network devices (both SSH and serial.)"""
 
     def session_preparation(self):
         """Prepare the session after the connection has been established."""
@@ -124,3 +124,15 @@ class VyOSSSH(CiscoSSHConnection):
     def save_config(self, cmd="", confirm=True, confirm_response=""):
         """Not Implemented"""
         raise NotImplementedError
+
+
+class VyOSSSH(VyOSBase):
+    """VyOS SSH driver."""
+
+    pass
+
+
+class VyOSSerial(VyOSBase):
+    """VyOS Serial driver."""
+
+    pass

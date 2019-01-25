@@ -3,11 +3,11 @@
 from __future__ import unicode_literals
 import re
 import time
-from netmiko.cisco_base_connection import CiscoSSHConnection, CiscoFileTransfer
+from netmiko.cisco_base_connection import CiscoBaseConnection, CiscoFileTransfer
 
 
-class CiscoAsaSSH(CiscoSSHConnection):
-    """Subclass specific to Cisco ASA."""
+class CiscoAsaBase(CiscoBaseConnection):
+    """"Common Methods for Cisco ASA (both SSH and serial.)"""
 
     def session_preparation(self):
         """Prepare the session after the connection has been established."""
@@ -117,5 +117,17 @@ class CiscoAsaSSH(CiscoSSHConnection):
 
 class CiscoAsaFileTransfer(CiscoFileTransfer):
     """Cisco ASA SCP File Transfer driver."""
+
+    pass
+
+
+class CiscoAsaSSH(CiscoAsaBase):
+    """Cisco ASA SSH driver."""
+
+    pass
+
+
+class CiscoAsaSerial(CiscoAsaBase):
+    """Cisco ASA Serial driver."""
 
     pass

@@ -4,12 +4,14 @@ import re
 import socket
 import time
 
-from netmiko.cisco_base_connection import CiscoSSHConnection
+from netmiko.cisco_base_connection import CiscoBaseConnection
 from netmiko.cisco_base_connection import CiscoFileTransfer
 from netmiko.ssh_exception import NetMikoTimeoutException
 
 
-class LinuxSSH(CiscoSSHConnection):
+class LinuxBase(CiscoBaseConnection):
+    """Common Methods for Linux (both SSH and serial.)"""
+
     def session_preparation(self):
         """Prepare the session after the connection has been established."""
         self.ansi_escape_codes = True
@@ -162,3 +164,15 @@ class LinuxFileTransfer(CiscoFileTransfer):
 
     def disable_scp(self, cmd=None):
         raise NotImplementedError
+
+
+class LinuxSSH(LinuxBase):
+    """Linux SSH driver."""
+
+    pass
+
+
+class LinuxSerial(LinuxBase):
+    """Linux Serial driver."""
+
+    pass
